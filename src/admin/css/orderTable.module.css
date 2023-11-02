@@ -1,0 +1,29 @@
+.prepar, .ready, .pay, .notPay {
+  padding: 10px;
+  border-radius: 20px;
+  background-color: rgb(210, 202, 244);
+  color: rgb(96, 96, 219);
+}
+
+.ready {
+  background-color: rgb(197, 245, 218);
+  color: rgb(56, 128, 42);
+
+}
+
+.pay {
+  background-color: rgb(197, 245, 218);
+  color: rgb(56, 128, 42);
+
+}
+
+.notPay {
+  background-color: rgb(245, 192, 192);
+  color: red;
+
+}
+.row{
+  background-color:rgb(243, 241, 241) ;
+  width: 100%;
+  box-shadow: 1px 1px 10px rgba(191, 191, 191, 0.793);
+}

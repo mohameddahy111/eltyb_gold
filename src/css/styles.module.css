@@ -1,0 +1,10 @@
+.linlsMenu{
+  background: linear-gradient( to left, #f0c000 , #203040);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  }
+  
+/* footer{
+  background-image: url('../img/bg_footer.png');
+} */
