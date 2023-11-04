@@ -4,6 +4,7 @@ import {
   Box,
   Button,
   Checkbox,
+  IconButton,
   List,
   ListItem,
   Rating,
@@ -75,6 +76,8 @@ const MinCard = ({ ele }) => {
               checkedIcon={<Favorite sx={{ color: "red" }} />}
               icon={<FavoriteBorder />}
             />
+
+
             <List>
               <ListItem>
                 <Typography
@@ -82,7 +85,7 @@ const MinCard = ({ ele }) => {
                   color={"#fff"}
                   width={"100%"}
                   textAlign="center"
-                  fontSize={30}
+                  fontSize={25}
                 >
                   {ele.title}{" "}
                 </Typography>
@@ -111,7 +114,7 @@ const MinCard = ({ ele }) => {
                   Desc :
                   <Typography component={"span"} fontWeight={400}>
                     {" "}
-                    {ele.descrption}
+                    {ele.descrption.split(' ').splice(0, 4).join(' ')}
                   </Typography>{" "}
                 </Typography>
               </ListItem>

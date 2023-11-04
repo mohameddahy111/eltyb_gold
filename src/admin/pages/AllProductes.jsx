@@ -26,20 +26,21 @@ import { UseGetAllproducts } from "../../hooks/apiHoks";
 import { Store } from "../../context/dataStore";
 import AddCategoryBrands from "../components/AddCategoryBrands";
 import axios from "axios";
+import CheckCompo from "../components/CheckCompo";
 
 const AllProductes = () => {
   const navigate = useNavigate();
-  const { CategoryBrands, setCategoryBrands } = Store();
-  const { products  , pagination ,setpage } = UseGetAllproducts();
-  const [addItem , setAddItem]=useState('')
+  const { CategoryBrands, setCategoryBrands, userToken } = Store();
+  const { products, pagination, setpage } = UseGetAllproducts();
+  const [addItem, setAddItem] = useState("");
+  // const [statue, setStatue] = useState("");
 
-  const add = (titel)=>{
-    setAddItem(titel)
-    setTimeout(()=>{
-      setCategoryBrands(true)
-    },100)
-
-  }
+  const add = (titel) => {
+    setAddItem(titel);
+    setTimeout(() => {
+      setCategoryBrands(true);
+    }, 100);
+  };
   return (
     <Box>
       <Box
@@ -158,7 +159,7 @@ const AllProductes = () => {
                     </Typography>{" "}
                   </TableCell>
                   <TableCell>
-                    <Switch checked={x.statue} />
+                    <CheckCompo val={x.statue} id={x._id}/>
                   </TableCell>
                   <TableCell>
                     {new Date(x.createdAt).toLocaleString()}{" "}
@@ -177,7 +178,7 @@ const AllProductes = () => {
                   <TableCell>
                     <Button
                       onClick={() => {
-                        navigate(`/dashboard/products/${x.slug}` , {state : x});
+                        navigate(`/dashboard/products/${x.slug}`, { state: x });
                       }}
                       variant="contained"
                     >
@@ -197,18 +198,18 @@ const AllProductes = () => {
           >
             <Tooltip title="Last Page">
               <IconButton
-              onClick={() => {
-                setpage(pagination.pages);
-              }}
+                onClick={() => {
+                  setpage(pagination.pages);
+                }}
               >
                 <SkipPrevious />
               </IconButton>
             </Tooltip>
             <Tooltip title="Next">
               <IconButton
-              onClick={() => {
-                setpage(pagination.nextPage);
-              }}
+                onClick={() => {
+                  setpage(pagination.nextPage);
+                }}
               >
                 <ArrowBackIos />
               </IconButton>
@@ -220,18 +221,18 @@ const AllProductes = () => {
             </Box>
             <Tooltip title="Previous">
               <IconButton
-              onClick={() => {
-                setpage(pagination.perPage);
-              }}
+                onClick={() => {
+                  setpage(pagination.perPage);
+                }}
               >
                 <ArrowForwardIos />
               </IconButton>
             </Tooltip>
             <Tooltip title="First Page">
               <IconButton
-              onClick={() => {
-                setpage(1);
-              }}
+                onClick={() => {
+                  setpage(1);
+                }}
               >
                 <SkipNext />
               </IconButton>

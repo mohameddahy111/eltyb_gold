@@ -151,10 +151,11 @@ const ProductDetils = () => {
         );
       });
       await axios
-        .post(`https://eltaybbackend.onrender.com/product`, formData, {
+        .patch(`https://eltaybbackend.onrender.com/product/${ele._id}`, formData, {
           headers: { Authorization: `Bearer ${userToken}` },
         })
         .then((res) => {
+          console.log(res)
           if (res.status === 200) {
             enqueueSnackbar(`${res.data.message}`, { variant: "success" });
             navigate("/dashboard/products");
@@ -576,7 +577,7 @@ const ProductDetils = () => {
                     fullWidth={mobileDivice ? true : false}
                     type="submit"
                   >
-                    Add new Product
+                   Edit Product
                   </Button>
                 </Box>
               </form>
