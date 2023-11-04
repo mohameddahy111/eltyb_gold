@@ -155,7 +155,12 @@ export default function DetailsOrder({ option, data }) {
                           </Typography>
                         </TableCell>
                         <TableCell>
-                          <Typography>{x?.price} LE </Typography>
+                        {x.price !== x.final_price ? (
+                          <Typography><span className="price_span">{x.price}  </span> {x.final_price} LE </Typography>
+
+                        ) :(
+                          <Typography>{x.final_price} LE </Typography>
+                        )}
                         </TableCell>
                         <TableCell>
                           <Typography>{x?.size} </Typography>

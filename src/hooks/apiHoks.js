@@ -16,7 +16,6 @@ export const UseGetAllproducts = () => {
     getProducts()
 
       .then((res) => {
-        console.log(res)
         if (res.status === 200) {
           setProducts(res?.data?.data);
           setPagination(res?.data?.page);
@@ -33,7 +32,6 @@ export const UseGetAllproducts = () => {
     getProducts(page)
 
     .then((res) => {
-      console.log(res)
       if (res.status === 200) {
         setProducts(res?.data?.data);
         setPagination(res?.data?.page);

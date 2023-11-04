@@ -40,10 +40,18 @@ const AddProductes = () => {
   const [brands, setBrands] = useState("");
   const [priceSize, setPriceSize] = useState({
     price: "",
-    size: "",
+    size: 0,
     final_price: "",
     offer_value: 0,
   });
+
+  const sizeList = [
+    {title :'small'},
+    {title :'medium'},
+    {title :'large'},
+    {title :'1 Leter'},
+    {title :'1.5 Leter'},
+  ]
   const [ps, setPs] = useState([]);
   const formData = new FormData();
   const valuesPrice = (e) => {
@@ -52,6 +60,7 @@ const AddProductes = () => {
     setPriceSize(newItem);
   };
   const add = () => {
+    
     if (priceSize.price === "") {
       enqueueSnackbar("Please select a price", { variant: "error" });
       return;
@@ -60,10 +69,16 @@ const AddProductes = () => {
       enqueueSnackbar("Please select a size", { variant: "error" });
       return;
     }
+    const isExist = ps.find((x)=>x.size ===priceSize.size )
+    if (isExist) {
+      enqueueSnackbar("this size select before", { variant: "error" });
+      return;
+    }
+
     const list = [...ps];
     list.push(priceSize);
     setPs(list);
-    setPriceSize({ price: "", size: "", final_price: "", offer_value: 0 });
+    setPriceSize({ price: "", size: 0, final_price: "", offer_value: 0 });
   };
   const removItem = (x) => {
     const list = ps.filter((z) => z.size !== x.size);
@@ -411,14 +426,37 @@ const AddProductes = () => {
                 <ListItem
                   sx={{ display: "flex", alignItems: "center", gap: "10px" }}
                 >
-                  <TextField
+                  {/* <TextField
                     name="size"
                     label="Size"
                     value={priceSize.size}
                     onChange={(e) => {
                       valuesPrice(e);
                     }}
-                  />
+                  /> */}
+                  <Box>
+                    <FormControl fullWidth>
+                      <InputLabel id="brands">Size</InputLabel>
+                      <Select
+                      name="size"
+                        fullWidth
+                        labelId="size"
+                        id="size"
+                        value={priceSize.size }
+                        label="size"
+                        onChange={(e) => {
+                          valuesPrice(e);
+                        }}
+                          >
+                        <MenuItem value={0}>select size </MenuItem>
+                        {sizeList?.map((x , index) => (
+                          <MenuItem key={index} value={x.title}>
+                            {x.title}
+                          </MenuItem>
+                        ))}
+                      </Select>
+                    </FormControl>
+                  </Box>
                   <TextField
                     name="price"
                     label="Price"

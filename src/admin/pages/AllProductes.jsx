@@ -176,9 +176,9 @@ const AllProductes = () => {
                   </TableCell>
                   <TableCell>
                     <Button
-                      // onClick={() => {
-                      //   showDetails(x);
-                      // }}
+                      onClick={() => {
+                        navigate(`/dashboard/products/${x.slug}` , {state : x});
+                      }}
                       variant="contained"
                     >
                       eidit
