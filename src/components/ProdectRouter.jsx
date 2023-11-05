@@ -11,12 +11,12 @@ const ProdectRouter = ({ children }) => {
   useEffect(() => {
     if (!userInfo) {
       closeSnackbar();
-      navigate("https://eltyb-gold.vercel.app/");
+      navigate("/");
       enqueueSnackbar("must by login first", { variant: "error" });
       return;
     } else if (userInfo._isAdmin !== "admin") {
       closeSnackbar();
-      navigate("https://eltyb-gold.vercel.app/");
+      navigate("/");
       return;
     }
   }, [userInfo]);

@@ -48,10 +48,10 @@ const AllOrders = () => {
   };
 
   useEffect(() => {
-    // setInterval(()=>{
-    //   getAllOrders();
+    setInterval(()=>{
+      getAllOrders();
 
-    // },30*100)
+    },120*100)
     getAllOrders();
   }, []);
   useEffect(() => {
