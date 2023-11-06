@@ -32,7 +32,7 @@ const Cart = () => {
     await axios.patch(
       "https://eltaybbackend.onrender.com/cart",
       { itemId: id },
-     
+     {headers: { Authorization: `Bearer ${userToken}` },}
     ).then((res)=>{
       if (res.status===200) {
 

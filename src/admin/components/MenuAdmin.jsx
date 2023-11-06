@@ -25,7 +25,7 @@ const MenuAdmin = () => {
     },
     {
       title: "Users",
-      path: "/dashboard/users",
+      path: "/dashboard/all_user/",
       icon: <Groups2 sx={{ color: "#fff" }} />,
     },
     {

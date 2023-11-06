@@ -11,9 +11,10 @@ import Logout from '@mui/icons-material/Logout';
 import { Favorite, Inventory2 } from '@mui/icons-material';
 import { Store } from '../../context/dataStore';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 export default function UserMenu() {
-  const {setUserInfo , setUserToken,setCartItems ,userInfo }=Store()
+  const {setUserInfo , setUserToken ,userInfo  ,userToken}=Store()
   const navigate = useNavigate()
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -25,11 +26,21 @@ export default function UserMenu() {
     setAnchorEl(null);
   };
   const logout=async()=>{
-    localStorage.removeItem('userInfo')
-    localStorage.removeItem('userToken')
-    setUserInfo(null)
-    setUserToken(null);
-    navigate('/')
+    await axios.patch(`https://eltaybbackend.onrender.com/users/logout/${userInfo._id}` , {
+      _isActive:false
+    } , {headers: { Authorization: `Bearer ${userToken}` }}).then((res)=>{
+      if(res.status === 200){
+        console.log(res)
+        localStorage.removeItem('userInfo')
+        localStorage.removeItem('userToken')
+        setUserInfo(null)
+        setUserToken(null);
+        navigate('/')
+ 
+      }
+    }).catch((err)=>{
+      console.log(err)
+    })
 
   }
   return (

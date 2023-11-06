@@ -14,6 +14,7 @@ import UserDetils from "../admin/pages/UserDetils";
 import AddProductes from "../admin/pages/AddProductes";
 import AllProductes from "../admin/pages/AllProductes";
 import ProductDetils from "../admin/pages/ProductDetils";
+import AllUsers from "../admin/pages/AllUsers";
 
 export const Router = createBrowserRouter([
   {
@@ -37,46 +38,50 @@ export const Router = createBrowserRouter([
         element: <CheckOut />,
       },
       {
-        path:'/user/:id/orders',
-        element:<Orders/>
-      }, 
+        path: "/user/:id/orders",
+        element: <Orders />,
+      },
       {
-        path:'/user/wishList/',
-        element:<WishListPage/>
-      }
+        path: "/user/wishList/",
+        element: <WishListPage />,
+      },
     ],
   },
   {
     path: "/dashboard",
     element: (
-      <ProdectRouter >
+      <ProdectRouter>
         <DashLayout />
       </ProdectRouter>
     ),
     children: [
       {
         index: true,
-        element:<Dash/>
+        element: <Dash />,
       },
       {
-        path:"/dashboard/all_orders",
-      element:<AllOrders/>
+        path: "/dashboard/all_orders",
+        element: <AllOrders />,
       },
       {
-        path:"/dashboard/all_user/:id",
-      element:<UserDetils/>
+        path: "/dashboard/all_user/",
+        element: <AllUsers />,
       },
       {
-        path:"/dashboard/products",
-      element:<AllProductes/>
+        path: "/dashboard/all_user/:id",
+        element: <UserDetils />,
       },
       {
-        path:"/dashboard/products/add_product",
-      element:<AddProductes/>
+        path: "/dashboard/products",
+        element: <AllProductes />,
       },
       {
-        path:"/dashboard/products/:slug",
-      element:<ProductDetils/>
+        path: "/dashboard/products/add_product",
+        element: <AddProductes />,
+      },
+      {
+        path: "/dashboard/products/:slug",
+        element: <ProductDetils />,
       },
     ],
   },

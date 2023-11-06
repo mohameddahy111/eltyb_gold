@@ -16,6 +16,7 @@ import styles from "../css/styles.module.css";
 import { Link, Outlet, useNavigation } from "react-router-dom";
 import footerImg from "../img/img4.png";
 import LoginCard from "../components/LoginCard";
+import { socket } from "../socket";
 
 const Layout = () => {
   const { userInfo } = Store();
@@ -34,6 +35,10 @@ const Layout = () => {
       },
     },
   });
+  useEffect(()=>{
+    socket.connect()
+
+  },[])
 
   return (
     <ThemeProvider theme={theme}>
