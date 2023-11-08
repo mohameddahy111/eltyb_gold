@@ -22,6 +22,7 @@ import * as yup from "yup";
 import { Store } from "../../context/dataStore";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { socket } from "../../socket";
 
 const AddProductes = () => {
   const navigate = useNavigate();
@@ -155,6 +156,7 @@ const AddProductes = () => {
       getAllBrands(category);
     }
   }, [category]);
+
   return (
     <Box>
       <Container>

@@ -16,6 +16,7 @@ import LoginCard from "../../components/LoginCard";
 import { Store } from "../../context/dataStore";
 import MenuAdmin from "../components/MenuAdmin";
 import { Menu } from "@mui/icons-material";
+import ChatDailog from "../../components/ChatDailog";
 
 const DashLayout = () => {
   const { getAllOrders, mobileDivice } = Store();
@@ -86,6 +87,7 @@ const DashLayout = () => {
         <LoginCard />
       </main>
       <footer>
+        <ChatDailog/>
         <Box>
           <Container>
             {/* <img src={footerImg} alt="" width={"10%"} /> */}

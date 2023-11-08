@@ -17,6 +17,8 @@ export const DataStoreProvider = ({ children }) => {
   const [brandsList, setBrandsList] = useState([]);
   const [seleproduct, setSeleProduct] = useState("");
   const [CategoryBrands, setCategoryBrands] = useState(false);
+  const [openChat, setOpenChat] = useState(false);
+  const [adminChats, setAdminChats] = useState('');
 
   const [userToken, setUserToken] = useState(
     localStorage.userToken ? JSON.parse(localStorage.userToken) : null
@@ -157,7 +159,15 @@ export const DataStoreProvider = ({ children }) => {
         console.log(err);
       });
   };
-
+  //-----------------------------------get All chats--------------------------------//
+  const getAllChats = async () => {
+    await axios
+      .get(`https://eltaybbackend.onrender.com/chat` , {headers: { Authorization: `Bearer ${userToken}` }})
+      .then((res) =>setAdminChats(res.data))
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   //---------------------------end_admin-------------------------------------//
 
   useEffect(() => {
@@ -165,6 +175,9 @@ export const DataStoreProvider = ({ children }) => {
       getCart();
       getUserInfo();
       getWishList();
+    }
+    if (userInfo && userInfo._isAdmin === "admin") {
+      getAllChats();
     }
   }, [userToken]);
 
@@ -204,7 +217,11 @@ export const DataStoreProvider = ({ children }) => {
         CategoryBrands,
         setCategoryBrands,
         brandsList,
-        setBrandsList,getAllBrands
+        setBrandsList,
+        getAllBrands,
+        openChat,
+        setOpenChat,
+        adminChats, setAdminChats    ,    getAllChats,
       }}
     >
       {children}{" "}

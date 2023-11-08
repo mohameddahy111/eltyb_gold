@@ -16,11 +16,11 @@ import styles from "../css/styles.module.css";
 import { Link, Outlet, useNavigation } from "react-router-dom";
 import footerImg from "../img/img4.png";
 import LoginCard from "../components/LoginCard";
+import HelpSpeed from "../components/HelpSpeed";
+import ChatDailog from "../components/ChatDailog";
 import { socket } from "../socket";
 
 const Layout = () => {
-  const { userInfo } = Store();
-  const navigate = useNavigation();
   const theme = createTheme({
     typography: {
       fontFamily: "Exo 2",
@@ -35,10 +35,7 @@ const Layout = () => {
       },
     },
   });
-  useEffect(()=>{
-    socket.connect()
-
-  },[])
+  // socket.emit()
 
   return (
     <ThemeProvider theme={theme}>
@@ -78,11 +75,13 @@ const Layout = () => {
       </main>
       <footer>
         <Box bgcolor={"#203040"}>
-          <Container>
+          <Container sx={{position :'relative'}}>
+        <HelpSpeed/>
             <img src={footerImg} alt="" width={"10%"} />
           </Container>
         </Box>
       </footer>
+      <ChatDailog/>
     </ThemeProvider>
   );
 };

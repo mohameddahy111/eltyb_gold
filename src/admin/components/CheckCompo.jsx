@@ -1,10 +1,10 @@
-import { Switch } from '@mui/material';
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
-import { Store } from '../../context/dataStore';
+import { Switch } from "@mui/material";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { Store } from "../../context/dataStore";
 
-const CheckCompo = ({val , id}) => {
-  const {userToken}=Store()
+const CheckCompo = ({ val, id }) => {
+  const { userToken } = Store();
   const [statue, setStatue] = useState(val);
   const changeStatus = async () => {
     await axios
@@ -21,14 +21,17 @@ const CheckCompo = ({val , id}) => {
       });
   };
   // useEffect(()=>{changeStatus()},[statue])
+
+
   return (
-    <Switch  
-    value={statue}
-    defaultChecked={val ? true : false}
-    onChange={(e)=>{setStatue(!statue , changeStatus())}}
-    
+    <Switch
+      value={statue}
+      defaultChecked={val ? true : false}
+      onChange={(e) => {
+        setStatue(!statue, changeStatus());
+      }}
     />
-);
-}
+  );
+};
 
 export default CheckCompo;
