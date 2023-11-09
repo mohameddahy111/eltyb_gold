@@ -17,9 +17,10 @@ import { Store } from "../../context/dataStore";
 import MenuAdmin from "../components/MenuAdmin";
 import { Menu } from "@mui/icons-material";
 import ChatDailog from "../../components/ChatDailog";
+import { socket } from "../../socket";
 
 const DashLayout = () => {
-  const { getAllOrders, mobileDivice } = Store();
+  const { getAllOrders, mobileDivice , getAllChats } = Store();
   const [mobilList, setMobilList] = useState(false);
   const navigate = useNavigation();
 
@@ -38,13 +39,20 @@ const DashLayout = () => {
     },
   });
 
+  useEffect(()=>{
+    socket.connect()
+    socket.on('addMessage', ()=>{
+      getAllChats()
+    })
+  },[socket])
+
   useEffect(() => {
+    getAllChats()
     getAllOrders();
   }, []);
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      {window.location.pathname !== "/" && (
         <AppBar elevation={0} position="static" color="primary">
           <Toolbar sx={{ py: "20px" }}>
             <Container
@@ -81,7 +89,6 @@ const DashLayout = () => {
             <MenuAdmin />
           </Box>
         </AppBar>
-      )}
       <main>
         <Outlet />
         <LoginCard />

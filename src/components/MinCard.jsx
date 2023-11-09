@@ -62,7 +62,7 @@ const MinCard = ({ ele }) => {
   return (
     <>
       {ele && (
-        <div className={styles.book} >
+        <div className={styles.book}>
           <Box pt={1}>
             <Checkbox
               onChange={addWishList}
@@ -76,7 +76,6 @@ const MinCard = ({ ele }) => {
               checkedIcon={<Favorite sx={{ color: "red" }} />}
               icon={<FavoriteBorder />}
             />
-
 
             <List>
               <ListItem>
@@ -114,7 +113,7 @@ const MinCard = ({ ele }) => {
                   Desc :
                   <Typography component={"span"} fontWeight={400}>
                     {" "}
-                    {ele.descrption.split(' ').splice(0, 4).join(' ')}
+                    {ele.descrption.split(" ").splice(0, 4).join(" ")}
                   </Typography>{" "}
                 </Typography>
               </ListItem>
@@ -141,7 +140,6 @@ const MinCard = ({ ele }) => {
                   disabled={!ele.statue}
                 >
                   {!ele.statue ? "not available " : "Add to cart"}
-                 
                 </Button>
               </ListItem>
             </List>

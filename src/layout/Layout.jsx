@@ -13,14 +13,16 @@ import React, { useEffect } from "react";
 import { Store } from "../context/dataStore";
 import HeaderList from "./components/HeaderList";
 import styles from "../css/styles.module.css";
-import { Link, Outlet, useNavigation } from "react-router-dom";
+import { Link, Outlet, useNavigate, useNavigation } from "react-router-dom";
 import footerImg from "../img/img4.png";
 import LoginCard from "../components/LoginCard";
 import HelpSpeed from "../components/HelpSpeed";
 import ChatDailog from "../components/ChatDailog";
-import { socket } from "../socket";
 
 const Layout = () => {
+  const {userInfo} =Store()
+  const navigate = useNavigate();
+
   const theme = createTheme({
     typography: {
       fontFamily: "Exo 2",
@@ -35,7 +37,13 @@ const Layout = () => {
       },
     },
   });
-  // socket.emit()
+
+  useEffect(() => {
+    if (userInfo?._isAdmin === "admin") {
+      navigate("/dashboard");
+    }
+  }, [userInfo]);
+
 
   return (
     <ThemeProvider theme={theme}>

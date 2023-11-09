@@ -1,17 +1,25 @@
-import React, { useEffect } from 'react';
-import { Store } from '../../context/dataStore';
+import React, { useEffect } from "react";
+import { Store } from "../../context/dataStore";
+import { Box, Container, Grid } from "@mui/material";
+import MinCards from "../components/MinCards";
+import styles from "../css/minCard.module.css";
+import DlieveryCom from "../components/DlieveryCom";
 
 const Dash = () => {
-  const {getAllOrders} =Store()
-  // useEffect(()=>{
-  //   getAllOrders()
-  // })
+  const {} = Store();
 
   return (
-    <div>
-      dashbord
-    </div>
+    <Box className={styles.container}>
+      <Box>
+        <Container>
+          <Grid container spacing={1}>
+            <DlieveryCom/>
+            <MinCards />
+          </Grid>
+        </Container>
+      </Box>
+    </Box>
   );
-}
+};
 
 export default Dash;

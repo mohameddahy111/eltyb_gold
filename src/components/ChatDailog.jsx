@@ -58,7 +58,7 @@ export default function ChatDailog() {
         </DialogTitle>
         <Container>
           <Grid container spacing={1}>
-            {ListMessage.map((mess, index) => (
+            {ListMessage?.map((mess, index) => (
               <Grid
                 key={index}
                 item

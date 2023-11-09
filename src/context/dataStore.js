@@ -163,7 +163,8 @@ export const DataStoreProvider = ({ children }) => {
   const getAllChats = async () => {
     await axios
       .get(`https://eltaybbackend.onrender.com/chat` , {headers: { Authorization: `Bearer ${userToken}` }})
-      .then((res) =>setAdminChats(res.data))
+      .then((res) =>{
+      setAdminChats(res.data); console.log(res.data)})
       .catch((err) => {
         console.log(err);
       });
@@ -171,13 +172,16 @@ export const DataStoreProvider = ({ children }) => {
   //---------------------------end_admin-------------------------------------//
 
   useEffect(() => {
-    if (userToken) {
-      getCart();
+    if (userToken ) {
       getUserInfo();
-      getWishList();
-    }
-    if (userInfo && userInfo._isAdmin === "admin") {
-      getAllChats();
+      
+      if (userInfo && userInfo?._isAdmin !== "admin") {
+        getCart();
+        getWishList();
+      }
+      if (userInfo && userInfo?._isAdmin === "admin") {
+        getAllChats();
+      }
     }
   }, [userToken]);
 

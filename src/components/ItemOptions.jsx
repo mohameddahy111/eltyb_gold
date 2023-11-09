@@ -71,7 +71,7 @@ const ItemOptions = ({ data }) => {
               select size{" "}
             </MenuItem>
             {data?.price_size?.map((x, index) => (
-              <MenuItem value={x.size}>
+              <MenuItem value={x.size} key={index}>
                 <Box display={'flex'} justifyContent={'space-between'} alignItems={'center'}>
                   <Typography>{x.size} </Typography>{" "}
                   {x.offer_value >0 &&  <Typography color={'green'}>{x.offer_value} % off </Typography>}

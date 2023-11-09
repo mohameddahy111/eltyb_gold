@@ -23,11 +23,11 @@ import { serviesList } from "../utils/data";
 const Home = () => {
   const {userInfo , setOpenLoginDailog}=Store()
   const navigate = useNavigate();
-  useEffect(() => {
-    if (userInfo?._isAdmin === "admin") {
-      navigate("/dashboard");
-    }
-  }, [userInfo]);
+  // useEffect(() => {
+  //   if (userInfo?._isAdmin === "admin") {
+  //     navigate("/dashboard");
+  //   }
+  // }, [userInfo]);
 
   return (
     <Box className={styles.container_Grid}>
